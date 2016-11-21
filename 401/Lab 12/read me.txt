@@ -1,1 +1,0 @@
-this folder has sort logic : Heap sort, merge sort and Quick sort in java
