@@ -1,12 +1,13 @@
 /*CREATE TABLE `stop_master` (
   `stop_id` varchar(10) DEFAULT NULL,
   `stop_code` varchar(10) DEFAULT NULL,
-  `stop_name` varchar(30) DEFAULT NULL,
+  `stop_name` varchar(50) DEFAULT NULL,
   `stop_desc` varchar(10) DEFAULT NULL,
   `stop_lat` decimal(9,6),
   `stop_lon` decimal(9,6),`zone_id` smallint,`stop_url` varchar(30),`location_type` smallint,`parent_station`varchar(10)
-);
-*/
+);*/
+
+
 select  * from stop_master;
 
 insert into stop_master values('101',null,'Van Cortlandt Park - 242 St',null,'40.889248','-73.898583',null,null,'1',null);
@@ -399,9 +400,9 @@ insert into stop_master values('614S',null,'Longwood Av',null,'40.816104','-73.8
 insert into stop_master values('615',null,'E 149 St',null,'40.812118','-73.904098',null,null,'1',null);
 insert into stop_master values('615N',null,'E 149 St',null,'40.812118','-73.904098',null,null,'0','615');
 insert into stop_master values('615S',null,'E 149 St',null,'40.812118','-73.904098',null,null,'0','615');
-insert into stop_master values('616',null,'E 143 St - St Mary's St',null,'40.808719','-73.907657',null,null,'1',null);
-insert into stop_master values('616N',null,'E 143 St - St Mary's St',null,'40.808719','-73.907657',null,null,'0','616');
-insert into stop_master values('616S',null,'E 143 St - St Mary's St',null,'40.808719','-73.907657',null,null,'0','616');
+insert into stop_master values('616',null,'E 143 St - St Mary''s St',null,'40.808719','-73.907657',null,null,'1',null);
+insert into stop_master values('616N',null,'E 143 St - St Mary''s St',null,'40.808719','-73.907657',null,null,'0','616');
+insert into stop_master values('616S',null,'E 143 St - St Mary''s St',null,'40.808719','-73.907657',null,null,'0','616');
 insert into stop_master values('617',null,'Cypress Av',null,'40.805368','-73.914042',null,null,'1',null);
 insert into stop_master values('617N',null,'Cypress Av',null,'40.805368','-73.914042',null,null,'0','617');
 insert into stop_master values('617S',null,'Cypress Av',null,'40.805368','-73.914042',null,null,'0','617');
@@ -1440,9 +1441,9 @@ insert into stop_master values('S13S',null,'Richmond Valley',null,'40.519631','-
 insert into stop_master values('S14',null,'Pleasant Plains',null,'40.52241','-74.217847',null,null,'1',null);
 insert into stop_master values('S14N',null,'Pleasant Plains',null,'40.52241','-74.217847',null,null,'0','S14');
 insert into stop_master values('S14S',null,'Pleasant Plains',null,'40.52241','-74.217847',null,null,'0','S14');
-insert into stop_master values('S15',null,'Prince's Bay',null,'40.525507','-74.200064',null,null,'1',null);
-insert into stop_master values('S15N',null,'Prince's Bay',null,'40.525507','-74.200064',null,null,'0','S15');
-insert into stop_master values('S15S',null,'Prince's Bay',null,'40.525507','-74.200064',null,null,'0','S15');
+insert into stop_master values('S15',null,'Prince''s Bay',null,'40.525507','-74.200064',null,null,'1',null);
+insert into stop_master values('S15N',null,'Prince''s Bay',null,'40.525507','-74.200064',null,null,'0','S15');
+insert into stop_master values('S15S',null,'Prince''s Bay',null,'40.525507','-74.200064',null,null,'0','S15');
 insert into stop_master values('S16',null,'Huguenot',null,'40.533674','-74.191794',null,null,'1',null);
 insert into stop_master values('S16N',null,'Huguenot',null,'40.533674','-74.191794',null,null,'0','S16');
 insert into stop_master values('S16S',null,'Huguenot',null,'40.533674','-74.191794',null,null,'0','S16');
