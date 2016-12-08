@@ -1,0 +1,78 @@
+Lab 15: Huffman Encoding
+------------------------
+You are to develop a program that will encode and decode Huffman encoding.
+
+The requirements are below; do not deviate from these if you want to obtain
+complete marks.
+
+To encode, you must run the program as follows:
+
+   $ java Huffman encode "men sings signs" output.txt
+
+To decode, you must run the program as follows:
+
+   $ java Huffman decode output.txt
+
+The decoded string must be printed to the standard output.
+
+Pay attention to the command line parameters:
+
+- If the first parameter is "encode", then it must be followed by a 
+  string to be encoded and the name of a file where the encoded results 
+  must be saved.  The string to be encoded must be in quotes if there 
+  are multiple words in it.  The third parameter is the name of the 
+  file that will store the encoded output.
+
+- If the first parameter is "decode", then the second parameter should
+  be the name of a file where the encoded Huffman tree is stored.  Your
+  program should read the file and print the un-encoded text.
+
+The format of the output file is shown below.
+
+Here is a sample run of your program:
+
+  $ java Huffman encode "men sings signs" output.txt
+  $ java Huffman decode output.txt
+  men sings signs
+  $
+
+And now to the format of the output file.
+
+  $ cat output.txt
+    010
+  e 1010
+  g 011
+  i 100
+  m 1011
+  n 00
+  s 11
+  **
+  1011101000010111000001111010111000110011
+
+The output file is delimited in two parts by the delimiter "**".  Above the
+delimiter is the character and its encoding.  (Note that in the above
+output, the first line is the encoding of the space character.)
+Below the delimiter is the compressed bit-encoding of the message.
+
+If your program works accurately, the output of the encoded string 
+"men sings signs" should correspond to the contents of the output.txt file
+above.
+
+Chapter 13 in your book has code that you can start with to create the
+encoding if you want.  There are a few things you should be aware of:
+
+- Unlike the book, you DO NOT need to read in a file to get the 
+  message to be encoded; in the above program, the message is passed on 
+  the command line.  
+- Because we do not read a message from a file, you will have to
+  modify the code of Chapter 13 so it does not consider '\n' as a valid
+  character in the Huffman encoded tree.
+- DO NOT USE java.util.PriorityQueue class as shown in the code in Chapter
+  13.  Instead, use the CS401PriorityQueue class you developed earlier in
+  the semester.  If you use the code provided in Chapter 13, you will have 
+  to add two new methods to the CS401PriorityQueue class:
+  - public E element() -- Retreieves, but does not remove, the element at
+                          the head of the priority queue.
+  - public int size()  -- Returns the size (number of elements) of the
+                          priority queue.
+
