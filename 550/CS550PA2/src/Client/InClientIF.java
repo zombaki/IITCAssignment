@@ -1,5 +1,6 @@
 package Client;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /******************************************************************************************************************
@@ -8,7 +9,7 @@ import java.rmi.RemoteException;
  * @author Piyush and Priyanka
  *
  */
-public interface InClientIF {
+public interface InClientIF  extends Remote {
 
 	public boolean query(String msgID,int intTTL,String fileName) throws RemoteException;
 	public boolean queryhit(String msgID,int intTTL,String fileName,String peerIP,int portNum) throws RemoteException;
