@@ -55,7 +55,7 @@ public class Peer{
 		reqtdMsgID=new ArrayList<String>();
 		blnSearching=false;
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
         int opt=0;
         intPort=args[0];
         initlaizePeer();
@@ -83,41 +83,41 @@ public class Peer{
 			case 2:
 				System.out.println("Please enter the file which you want to search and download.");
 				String strFileName = sc.next();
+				for (int i =0 ; i<=200 ;i++){//FOR PERFORMANCE TESTING 
 				localMsgID++;
 				String MsgID = intPort+"-"+localMsgID;//MSGID format is portnumber with; msgid to make it unique in the network
 				String name = "peerImp";
 				reqtdMsgID.add(MsgID);
-				blnSearching=true;
+				//blnSearching=true;
 				startTime=System.currentTimeMillis();//SET START TIME AS A TIME
-	            for (int a : neighbour){
-	            	//Registry registry;
-					try {
-						//System.out.println(a+"trying to connect to....");
-						String registry = "rmi://localhost:"+a+"/peerImp";
-						//registry = LocateRegistry.getRegistry("localhost",a);
-						//InClientIF comp = (InClientIF) registry.lookup(name);
-						InClientIF comp = (InClientIF) Naming.lookup(registry);
-						if (comp.query(MsgID, maxTTL, strFileName))
-							System.out.println("Your request is initiated..");
-						else
-							System.out.println("Some problem with the system, please get in touch with admin..");
-						TimeUnit.SECONDS.sleep(10);//SET 10 seconds as time.
-						if (blnSearching){
-							System.out.println("Unable to find the files, which is requested by you.");
-							blnSearching=false;//blnSearching if true means that search is still going and we didnt found the outputf
+				
+		            for (int a : neighbour){
+		            	//Registry registry;
+						try {
+							//System.out.println(a+"trying to connect to....");
+							String registry = "rmi://localhost:"+a+"/peerImp";
+							//registry = LocateRegistry.getRegistry("localhost",a);
+							//InClientIF comp = (InClientIF) registry.lookup(name);
+							InClientIF comp = (InClientIF) Naming.lookup(registry);
+							if (comp.query(MsgID, maxTTL, strFileName))
+								System.out.println("Your request is initiated..");
+							else
+								System.out.println("Some problem with the system, please get in touch with admin..");
+							//TimeUnit.SECONDS.sleep(10);//SET 10 seconds as time.
+							if (blnSearching){
+								System.out.println("Unable to find the files, which is requested by you.");
+								blnSearching=false;//blnSearching if true means that search is still going and we didnt found the outputf
+							}
+						} catch (RemoteException | NotBoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (MalformedURLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-					} catch (RemoteException | NotBoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (MalformedURLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-		            
-	            }
+			            
+		            }
+				}
 	            break;
 			case 3:
 				for (int b : neighbour){
@@ -236,10 +236,10 @@ public class Peer{
 					}
 					if (msgDetail != null){
 						if (reqtdMsgID.contains(msgDetail.getmsgID())){
-							if (blnSearching){
+							if (true){
 								blnSearching=false;
 								System.out.println("Your requested item is here,we are proceeding with the download.");
-								fetchFile(msgDetail.getPortNo(),msgDetail.getFileName());
+								//fetchFile(msgDetail.getPortNo(),msgDetail.getFileName()); //Commenting to test performance
 								endTime=System.currentTimeMillis();//SET START TIME AS A TIME
 								System.out.println("Total time taken by system to fetch is : "+Long.toString(endTime-startTime) +" ms.");
 							}

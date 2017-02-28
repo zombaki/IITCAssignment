@@ -13,4 +13,5 @@ public interface InClientIF  extends Remote {
 
 	public boolean query(String msgID,int intTTL,String fileName) throws RemoteException;
 	public boolean queryhit(String msgID,int intTTL,String fileName,String peerIP,int portNum) throws RemoteException;
+	public byte[] downloadFile(String fileName) throws RemoteException;
 }
